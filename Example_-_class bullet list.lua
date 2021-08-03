@@ -1,3 +1,4 @@
+
 -- Bullet List
 
 bullet = class()
@@ -11,7 +12,7 @@ end
 
 bullets = {}
 
-    
+
 
 
 -- Use this function to perform your initial setup
@@ -26,19 +27,19 @@ end
 function draw()
     -- This sets a dark background color 
     background(40, 40, 50)
-
+    
     -- This sets the line thickness
     strokeWidth(5)
     for i=0,#bullets do
         bullets[i].x=bullets[i].x+bullets[i].incx
         bullets[i].y=bullets[i].y+bullets[i].incy
         
-        if bullets[i].x < 0 then bullets[i].x =  WIDTH/2 end
-        if bullets[i].x > WIDTH then bullets[i].y = WIDTH/2 end
-        if bullets[i].y < 0 then bullets[i].y = HEIGHT/2 end
-        if bullets[i].y > HEIGHT then bullets[i].x = HEIGHT/2 end
+        if bullets[i].x < 0 then bullets[i] = bullet(320,200) end
+        if bullets[i].x > WIDTH then bullets[i] = bullet(320,200) end
+        if bullets[i].y < 0 then bullets[i] = bullet(320,200) end
+        if bullets[i].y > HEIGHT then bullets[i] = bullet(320,200) end
         
-                rect(bullets[i].x,bullets[i].y,32,32)
+        rect(bullets[i].x,bullets[i].y,32,32)
     end
     -- Do your drawing here
     
