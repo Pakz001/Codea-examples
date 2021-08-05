@@ -1,14 +1,15 @@
 
 
+
 -- Botcoordination
+-- buggy
 
-
--- added a grif collision system
+-- added a grid collision system
 -- for better performance.
 -- gauntlet gdc talk
 
 
-maxbots = 32
+maxbots = 64
 botwidth = 16
 botheight = 16
 cellwidth = WIDTH/20
@@ -73,34 +74,55 @@ function bot:draw()
     rect(self.position.x,self.position.y,botwidth,botheight)
 end
 function bot:update()
-    -- move bots away from other bots
     
     
   slide=false
-    
-    if self.prvpos.x==math.floor(self.position.x/10) and self.prvpos.y==math.floor(self.position.y/10)then
-        self.stuckcnt=self.stuckcnt+1
-    else
-        self.stuckcnt = 0
-    end
-    self.prvpos.x = math.floor(self.position.x/10)
-    self.prvpos.y = math.floor(self.position.y/10)
-    if self.stuckcnt> 160 then
-        self.state=1
-        self.temptarget = self.lc
-    end
+    --if we get stuck move to a corner of wall
+    if math.random()<.10 then
+        if self.prvpos.x==math.floor(self.position.x/10) and self.prvpos.y==math.floor(self.position.y/10)then
+            self.stuckcnt=self.stuckcnt+1
+        else
+            self.stuckcnt = 0
+        end
+        self.prvpos.x = math.floor(self.position.x/10)
+        self.prvpos.y = math.floor(self.position.y/10)
+        if self.stuckcnt> 5 then
+            self.state=1
+            --self.temptarget = self.lc
+            local d = {}
+            d[1] = self.uc:dist(self.position)
+            d[2]= self.bc:dist(self.position)
+            d[3]= self.lc:dist(self.position)
+            d[4]= self.rc:dist(self.position)
+            local l=d[1]
+            local s = 1
+            for i=1,4 do
+                if d[i]<l then 
+                    l=d[i]
+                    s=i
+                end
+            end
+            if s == 1 then self.temptarget = self.bc end
+            if s == 2 then self.temptarget = self.uc end 
+            if s == 3 then self.temptarget = self.rc end 
+            if s == 4 then self.temptarget = self.lc end
+                    
+                
+            
+        end
+    end   
     --do goto sk     if slide==false then
+    -- if we are moving next to a wall then handle this
     if self.state==0 then
-    for y=-26,26,5 do
-        for x=-26,30,5 do
+       -- do goto sk end
+    for y=-cellwidth,cellheight,cellheight/2 do
+        for x=-cellwidth,cellwidth,cellwidth/2 do
             tx = (self.position.x+x)/cellwidth
             ty = (self.position.y+y)/cellheight
             tx = math.floor(tx)
             ty = math.floor(ty)
             
             if tx>0 and ty>0 and tx<20 and ty<20 and map[tx][ty]==1 then
-                local w = 0
-                local h = 0
                 local l = tx
                 local r = tx
                 local u = ty
@@ -135,6 +157,7 @@ function bot:update()
     
     
     ::sk::
+    -- collision system gauntlet bots vs bots
     --do goto sk end
     sx = math.floor(self.position.x/cellwidth)
     sy = math.floor(self.position.y/cellheight)
@@ -168,7 +191,7 @@ function bot:update()
     
     
     --::sk::
-    
+    -- move towards target or temptarget
     if self.state==0 then
     a = math.atan2(self.position.y-self.target.y,self.position.x-self.target.x)     
     
@@ -186,10 +209,10 @@ function bot:update()
         self.position.y = self.position.y - math.sin(            a )
     end
     
-    
+    -- collission vs map
     if slide==false then
-    for y=-16,16,5 do
-        for x=-16,20,5 do
+    for y=-cellheight/2,cellheight/2,cellheight/4 do
+        for x=-cellwidth/2,cellwidth/2,cellwidth/4 do
             tx = (self.position.x+x)/cellwidth
             ty = (self.position.y+y)/cellheight
             tx = math.floor(tx)
@@ -203,7 +226,8 @@ function bot:update()
         end
     end
     end
-    
+   
+    -- if reach target or temptarget 
     if self.state == 0 and self.position:dist(self.target)<12 then
         if self.target.y == HEIGHT-20 then
             self.target.y=30
@@ -238,11 +262,10 @@ function draw()
     -- This sets the line thickness
     strokeWidth(5)
     
+    
+    -- store the positions of the bots into a collision system
     for x=0,20 do
         for y=0,20 do
-            --if #mapcol[x][y]>50 then
-            --print(#mapcol[x][y])
-            --end
             for i=1,#mapcol[x][y] do
                 
                 table.remove(mapcol[x][y])
@@ -261,10 +284,10 @@ function draw()
         
     end
     
-        fill(224, 131, 57)
-        text(bots[1].stuckcnt,100,100)
+     --   fill(224, 131, 57)
+    -- text(bots[1].stuckcnt,100,100)
     
-    
+    -- draw
     drawmap()
     for i=1,#bots do
         for z=1,2 do
@@ -292,3 +315,6 @@ function drawmap()
         end
     end
 end
+    
+    
+
