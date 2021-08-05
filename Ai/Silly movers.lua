@@ -1,5 +1,6 @@
  -- Botcoordination
 
+maxbots = 10
 botwidth = 16
 botheight = 16
 cellwidth = WIDTH/20
@@ -44,8 +45,8 @@ function bot:update()
     
     for i,v in ipairs(bots) do
         if v~=self then
-            if v.position:dist(self.position)<32 then
-                a = math.atan2(v.position.y-self.position.y,v.position.x-self.position.x)
+            if v.position:dist(self.position)<20 then
+                a = math.atan2(v.position.y-self.position.y,v.position.x-self.position.x)+math.random()-1
                 
                 
         
@@ -69,7 +70,7 @@ function bot:update()
     
     
     for y=-16,16,5 do
-        for x=-16,16,5 do
+        for x=-16,20,5 do
             tx = (self.position.x+x)/cellwidth
             ty = (self.position.y+y)/cellheight
         tx = math.floor(tx)
@@ -86,8 +87,10 @@ function bot:update()
     if self.position:dist(self.target)<32 then
         if self.target.y == HEIGHT-59 then
             self.target.y=59
+            self.target.x =math.random(64,WIDTH-64)
         else
             self.target.y = HEIGHT-59
+            self.target.x = math.random(64,WIDTH-64)
         end
     end
     
@@ -100,7 +103,7 @@ end
 -- Use this function to perform your initial setup
 function setup()
     print("Hello World!")
-    for i=1,5 do
+    for i=1,maxbots do
         bots[i]=bot(i*botwidth+50,100)
         bots[i].target = vec2(WIDTH/2,HEIGHT-59)
     end
