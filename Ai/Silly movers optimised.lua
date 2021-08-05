@@ -1,3 +1,4 @@
+
  -- Botcoordination
 
 
@@ -6,7 +7,7 @@
 -- gauntlet gdc talk
 
 
-maxbots = 500
+maxbots = 25
 botwidth = 16
 botheight = 16
 cellwidth = WIDTH/20
@@ -48,12 +49,30 @@ function bot:init(num,x,y)
     self.pos = 1 -- position in path
     self.speed = 0.5
     self.whisker = {}
+    self.stuckcnt = 0
+    self.prvpos = vec2(0,0)
 end
 function bot:draw()
     rect(self.position.x,self.position.y,botwidth,botheight)
 end
 function bot:update()
     -- move bots away from other bots
+    --do goto sk end
+    if math.floor(self.prvpos.x) == math.floor(self.position.x)
+    and math.floor(self.prvpos.y) == math.floor(self.position.y) then
+        self.stuckcnt = self.stuckcnt + 1
+        
+    end
+    self.prvpos.x=math.floor(self.position.x)
+    self.prvpos.y=math.floor(self.position.y)
+    
+    if self.stuckcnt>100 then
+        self.stuckcnt=0
+        a = math.rad(math.random(0,360))
+        self.position.x=self.position.x+math.cos(a)*10
+        self.position.y=self.position.y+math.sin(a)*10
+    end
+    ::sk::
     --do goto sk end
     sx = math.floor(self.position.x/cellwidth)
     sy = math.floor(self.position.y/cellheight)
@@ -86,7 +105,7 @@ function bot:update()
     end
     
     
-    ::sk::
+    --::sk::
 
     
     a = math.atan2(self.position.y-self.target.y,self.position.x-self.target.x)     
@@ -147,10 +166,13 @@ function draw()
     
     for x=0,20 do
         for y=0,20 do
-            
+            --if #mapcol[x][y]>50 then
+                --print(#mapcol[x][y])
+            --end
             for i=1,#mapcol[x][y] do
-                mapcol[x][y][i]=nil
-            end
+                        
+                table.remove(mapcol[x][y])
+         end   
         end
     end
     for i=1,#bots do
@@ -169,8 +191,11 @@ function draw()
     
     drawmap()
     for i=1,#bots do
+        for z=1,2 do
         bots[i]:update()
+        end
         bots[i]:draw()
+            
     end
     -- Do your drawing here
     
