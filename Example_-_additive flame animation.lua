@@ -1,3 +1,4 @@
+
 -- Blendmode additive flame effect
 
 par = class()
@@ -53,14 +54,14 @@ function draw()
     strokeWidth(5)
     
     blendMode(ADDITIVE)
-    if math.random()<.5 then
+    if math.random()<1 then
         local con=false
         for i,v in pairs(pars) do
             if v.active==false then
                 v.active=true
                 v.time = 100
                 v.scale = math.random()/2+.5
-                v.move = vec2(0,math.random()/2+.5)
+                v.move = vec2(0,math.random()+1)
                 v.position.y=200
                 con=true
             end
