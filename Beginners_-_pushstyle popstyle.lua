@@ -1,3 +1,4 @@
+
 -- Pushstyle Popstyle
 
 -- Use this function to perform your initial setup
@@ -9,7 +10,7 @@ end
 function draw()
     -- This sets a dark background color 
     background(40, 40, 50)
-
+    
     
     -- draw a rectangle
     rect(WIDTH/2,HEIGHT/2,WIDTH/4,HEIGHT/4)
@@ -24,8 +25,9 @@ function draw()
     
     -- restore drawing styles that were stored
     popStyle()
-
+    
+    -- draw a rectangle
+    rect(WIDTH/4,HEIGHT/2,WIDTH/4,HEIGHT/4)
     -- Do your drawing here
     
 end
-
