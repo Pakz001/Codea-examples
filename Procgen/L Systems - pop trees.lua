@@ -14,25 +14,25 @@ function draw()
     -- This sets the line thickness
     strokeWidth(5)
     time=time+1
-    if time>10 then
+    if time>20 then
         time=0
         q = math.random(0,99999)
     end
     math.randomseed(q)
     translate(WIDTH/2,200)
+    scale(2,2)
     branch(60)
     -- Do your drawing here
     
 end
 
 function branch(len)
-    theta = math.random(0,30);
-    strokeWidth(len/10)
+    theta = math.random(0,50);
+    strokeWidth(len/5)
     line(0, 0, 0, len);
     translate(0, len);
-    
     --Each branch’s length shrinks by two-thirds.
-    len = len * 0.75;
+    len = len * .76
     
     if len > 2 then
         pushMatrix();
