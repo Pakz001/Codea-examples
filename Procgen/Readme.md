@@ -2,7 +2,7 @@
 
 Map_brainlike_rivermaze.lua
 <br>
-<img src="Media/948FC64C-C0B1-400F-8788-76D2AD2D771E.png" width="60%" align = "center" title="hover text">
+<img src="Media/948FC64C-C0B1-400F-8788-76D2AD2D771E.png" width="60%" class="center" title="hover text">
 
 Lollipop_map
 <br>
