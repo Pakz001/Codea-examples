@@ -1,4 +1,4 @@
-<p align "center">
+<p align = "center">
 
 Map_brainlike_rivermaze.lua
 <br>
