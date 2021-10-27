@@ -6,3 +6,6 @@ I just bought codea(aug-2021) Maybe I might create hundreds of little projects a
 learning lua....
 
 Dotate to author (book and motivation funds) https://www.paypal.me/RudyvanEtten/5
+
+
+Codea is a ios and ipados programming tool. It can be bought from the apple app store.
