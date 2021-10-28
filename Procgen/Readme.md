@@ -22,6 +22,6 @@ Random_walkers_texture01
 
 L-Systems_Plant
 <br>
-<img sr ="Media/7CE32069-F324-4033-88FB-887486EF20A2.png" width="60%">
+<img src="Media/7CE32069-F324-4033-88FB-887486EF20A2.png" width="60%">
 
 </p>
