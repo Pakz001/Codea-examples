@@ -1,20 +1,22 @@
 -- Asteroids Ship
-angle = 0
-currentangle = 0
-im = image(64,64)
-setContext(im)
-cnt=64
-fill(255)
-for x =0,64 do
-    --line(x,x/2,x,x/2)
-    rect(64-x,32-x/2,1,x)
-    cnt=cnt-1
-end
-fill(255,255,0)
-rect(0,32,64,1)
-setContext()
+
+
 -- Use this function to perform your initial setup
 function setup()
+    angle = 0
+    currentangle = 0
+    im = image(64,64)
+    setContext(im)
+    background(0,0,0,0)
+    stroke(255,255,255)
+    strokeWidth(2)
+    for x =0,63 do
+        line(64-x,32-x/2,64-x,32+x/2)
+    end
+    stroke(255,0,0)
+    strokeWidth(4)
+    line(0,32,64,32)
+    setContext()
     print("Hello World!")
 end
 
@@ -33,6 +35,7 @@ function draw()
         end 
     end
     --draw our ship sprite with currentangle
+    fill(255)
     pushMatrix()
     translate(WIDTH/2,HEIGHT/2)
     rotate(math.deg(currentangle))
