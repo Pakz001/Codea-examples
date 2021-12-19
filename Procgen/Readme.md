@@ -1,4 +1,8 @@
 
+
+golden mountains
+<br>
+<img src="Media/B3426AA9-078E-4AE2-9B10-D5B698D76A9F.png" width="60%">
   
   asteroids with tunnel system
   <br>
