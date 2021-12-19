@@ -1,4 +1,5 @@
-<p align = "center">
+
+  
   asteroids with tunnel system
   <br>
  <img src="Media/18F0BBB2-FD71-4498-A425-979DA9FD6608.png" width="60%">
