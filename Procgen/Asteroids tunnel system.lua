@@ -159,7 +159,7 @@ function createasteroid()
             while math.floor(startx) == math.floor(x2) == false do
                 startx = startx + math.cos(angle) * 1
                 starty = starty + math.sin(angle) * 1
-                for r=-2,2 do
+                for r=-2,2,.3 do
                     tempmap[math.floor(startx+r)][math.floor(starty+r)]=1
                 end
                 cnt=cnt+1
