@@ -61,6 +61,69 @@ function createasteroid()
     end
     -- find a starting point
     startx = nil
+-- Procgen Asteroid Tunnels
+
+mapwidth = 512
+mapheight = 512
+tilewidth = WIDTH / mapwidth
+tileheight = HEIGHT / mapheight
+map = {}
+tempmap = {}
+
+numtunnels = 50
+
+-- Use this function to perform your initial setup
+function setup()
+    print("Hello World!")
+    
+    -- create our asteroid map
+    for x=0,mapwidth do
+        map[x]={}
+        tempmap[x]={}
+        for y=0,mapheight do
+            map[x][y]=0        
+            tempmap[x][y]=0
+        end
+    end
+    
+    createasteroid()
+end
+
+-- This function gets called once every frame
+function draw()
+    -- This sets a dark background color 
+    background(40, 40, 50)
+
+    -- This sets the line thickness
+    strokeWidth(5)
+
+    -- Do your drawing here
+    drawmap()
+end
+
+function drawmap()
+    stroke(255)
+    fill(255)
+    for y=0,mapheight do
+        for x=0,mapwidth do
+            if tempmap[x][y]==1 then
+                x1 = x*tilewidth
+                y1 = y*tileheight
+                rect(x1,y1,tilewidth+2,tileheight+2)
+            end
+        end
+    end
+end
+
+function createasteroid()
+    -- create points on the map
+    for i=0,numtunnels do
+        x1 = math.random(mapwidth/2-mapwidth/4,mapwidth/2+mapwidth/4)
+        y1 = math.random(mapheight/2-mapheight/4,mapheight/2+mapheight/4)
+        map[x1][y1] = 1
+    end
+    -- find a starting point
+    startx = nil
     starty = nil
     while startx == nil do
         x1 = math.floor(math.random()*mapwidth)
@@ -90,6 +153,7 @@ function createasteroid()
         end     
         -- tunnel from start to x2y2
         if x2 == 0 == false then
+            map[math.floor(startx)][math.floor(starty)]=0
             angle = math.atan2(y2-starty,x2-startx)
             cnt = 0
             while math.floor(startx) == math.floor(x2) == false do
