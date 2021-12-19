@@ -1,2 +1,2 @@
 
-![ Alt text](Media/Asteroids01.gif)
+![ Alt text](Media/asteroids01.gif)
