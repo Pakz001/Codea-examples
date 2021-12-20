@@ -1,3 +1,6 @@
+-- add mytiles.png here from the folder into the codea project as mytiles at 640x480 size
+
+
 -- Asteroids Ship
 numstars = 100
 starsprite = {}
