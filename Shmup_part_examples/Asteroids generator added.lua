@@ -502,10 +502,11 @@ function createasteroid(locx,locy)
             done = true
             for x2=-2,2 do
                 for y2=-2,2 do
-                    if tempmap[math.floor(x2+x)][math.floor(y2+y)]==2 then 
-                        done = false 
+                    if x2+x>0 and t2+y>0 and x2+x<genmapwidth and y2+y<genmapheight then
+                        if tempmap[math.floor(x2+x)][math.floor(y2+y)]==2 then 
+                            done = false 
+                        end
                     end
-                    
                 end
             end
             --if done==true then j=genmapwidth end
