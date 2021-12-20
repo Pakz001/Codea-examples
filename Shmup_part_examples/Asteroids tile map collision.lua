@@ -1,3 +1,13 @@
+-- Here I added scrolling collision. the player ship wil 
+-- stop a bit ahead of a block. i
+-- I had to add code to check ahead of our current angle and
+-- not allow the thrusters to be enabled. turn away of a collision!
+-- the tilemap is largely untested. you can get stuck with no
+-- way out until I add a mining laser that destroys blocks
+-- and drops pickups.
+
+
+
 -- Asteroids Ship
 numstars = 100
 shipmaxspeed = 10.0
