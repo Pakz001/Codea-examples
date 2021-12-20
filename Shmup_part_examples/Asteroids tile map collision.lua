@@ -90,7 +90,7 @@ function draw()
     text("starposition : "..math.floor(position.x/64)..","..math.floor(position.y/64),WIDTH-150,HEIGHT-50)
     -- collision with tiles
     if recttilecollide(WIDTH/2-((64*gamescale)/2),HEIGHT/2-((64*gamescale)/2),64*gamescale,64*gamescale,0,0) == true then
-        text("collision",WIDTH/2,100)
+        --text("collision",WIDTH/2,100)
     end
 end
 
@@ -112,13 +112,25 @@ end
 
 -- keep track how far we have traveled.
 function updateposition()
-    position.x = position.x + math.cos(currentangle) * shipspeed
-    position.y = position.y + math.sin(currentangle) * shipspeed
+    if recttilecollide(WIDTH/2-((64*gamescale)/2),HEIGHT/2-((64*gamescale)/2),64*gamescale+6,64*gamescale+6,0,0) == true then
+        --text("collision",WIDTH/2,100)
+        position.x = position.x - math.cos(currentangle) * 2
+        position.y = position.y - math.sin(currentangle) * 2
+        shipspeed = 0.0
+    else
+        position.x = position.x + math.cos(currentangle) * shipspeed
+        position.y = position.y + math.sin(currentangle) * shipspeed
+    end
 end
 
 -- if we press on the speed controls the shipspeed gets changed
 function updatespeedcontrols()
     --rect(WIDTH/2-WIDTH/8,50,WIDTH/4,50)
+    -- quick fix here to not let the speed be adjusted if we are directed into a block.
+    x2 = math.cos(currentangle) *2
+    y2 = math.sin (currentangle)*2
+    if recttilecollide((WIDTH/2-((64*gamescale)/2))+x2,(HEIGHT/2-((64*gamescale)/2))+y2,64*gamescale+6,64*gamescale+6,0,0) == true then return end
+    -- change our speed.
     left = WIDTH/2-WIDTH/8
     total = WIDTH/4
     step = total / shipmaxspeed
