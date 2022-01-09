@@ -168,11 +168,11 @@ function createmap()
     for i=1,5 do
         x = math.random(2,mw-1)
         y = math.random(2,mh-1)
-        while map[x][y]==0 and map[x][y+1]~=1 and map[x][y-1]~=1 do
+        while map[x][y]==0 or map[x][y+1]==1 or map[x][y-1]==1 do
             x = math.random(1,mw-1)
             y = math.random(1,mh-1)
         end
-        table.insert(agents,agent(x,y))
+           table.insert(agents,agent(x,y))
     end
 end
     
