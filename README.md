@@ -9,3 +9,6 @@ Dotate to author (book and motivation funds) https://www.paypal.me/RudyvanEtten/
 
 
 Codea is a ios and ipados programming tool. It can be bought from the apple app store.
+
+<br>
+<img src="Media/F2C543DF-FD2F-4B3D-9D1F-4DB3F0543A11.png" width="60%">
