@@ -14,10 +14,9 @@ function setup()
     print("Hello World!")
     
     presstimer = 0
-    presstimermax = 60
+    presstimermax = 30
     edittimer = 0 -- last edited
     hasundone = false
-    firstundo = false
     
     cellshor = 16
     cellsvert = 16 
@@ -37,17 +36,17 @@ function setup()
     
     undo = {}
     insertundo()
-
+    
 end
 
 -- This function gets called once every frame
 function draw()
     -- This sets a dark background color 
     background(40, 40, 50)
-
+    
     -- This sets the line thickness
     strokeWidth(5)
-
+    
     -- Do your drawing here
     drawpenbar()
     drawcolorbar()
@@ -73,28 +72,25 @@ function editpenbar()
     --rect(left,top,w,h)
     if CurrentTouch.state ==  BEGAN  then
         
-
+        
         if rectsoverlap(x1,y1,1,1,left+w-w/8-w/16,top+h/2-h/8,w/8,h/4) then
             if #undo>0 then
                 --grid = undo[#undo]
                 --table.remove(undo)
                 doundo()
-                if firstundo then 
-                    doundo()
-                    firstundo=false
-                end
+
                 --print(math.random())
                 presstimer = 0
             end
         end
-
+        
         --text("undo",left+w-w/8,top+h/2)
-
+        
         if rectsoverlap(x1,y1,1,1,left+w-w/8-w/16,top+h/4-h/8,w/8,h/4) then
             --redo()
             presstimer=0
         end
-
+        
         --text("redo",left+w-w/8,top+h/4)
     end
 end
@@ -111,15 +107,15 @@ function insertundo()
 end
 
 function doundo()
-    if #undo==0 then return end
+    if #undo==1 then return end
+    table.remove(undo)
     for x=0,cellshor do
-
+        
         for y=0,cellsvert do
             grid[x][y]=undo[#undo].grid[x][y]
         end
     end
-    table.remove(undo)
-    print("removed undo : "..#undo)
+     print("removed undo : "..#undo)
 end
 
 function editgrid()
@@ -146,7 +142,6 @@ function editgrid()
     edittimer=edittimer+1
     if CurrentTouch.state == ENDED and hasundone==false and edittimer>20   then
         insertundo()
-        firstundo = true
         hasundone = true
     end
 end
@@ -295,6 +290,6 @@ function iniaap64palette()
     table.insert(mypalette,color(90,78,68))
     table.insert(mypalette,color(66,57,52)) --64
     paletteblockwidth = ((WIDTH*.65)-(WIDTH*.5)) / 5
-   
+    
     paletteblockheight = (HEIGHT*.65)/(#mypalette/4)
 end
