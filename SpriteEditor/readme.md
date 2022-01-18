@@ -1,7 +1,4 @@
-There is some uncommented code in Setup() Here you 
-can save the image file that stores the sprite data.
-The readimage gives a compile error at the moment
-When this image is not there.(a 320x240 png)
+
 
 v0.09
 <br>
