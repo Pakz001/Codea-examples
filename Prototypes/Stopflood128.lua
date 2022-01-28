@@ -86,7 +86,7 @@ function optifine()
         a = math.floor(particle[i].x/cellw)
         b = math.floor(particle[i].y/cellh)
         --if math.random()<.01 then print(grid[a][b]) end
-        if grid[a][b]<450 then
+        if a>=0 and a<cellshor and b>=0 and b<cellsvert and  grid[a][b]<450 then
             table.insert(c,particle[i])
         end
     end
