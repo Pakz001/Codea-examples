@@ -13,6 +13,10 @@ ideas : space city generator and tileset. shop and selling and building. dangero
 note : only 1 large asteroid gets generated. this at position apr. 100,100. The map should be infinite(64bit and memory limits)
 
 <br>
-[![Everything Is AWESOME](https://youtu.be/v65tQsJGKE0/0.jpg)](https://youtu.be/v65tQsJGKE0 "Everything Is AWESOME")
+<iframe width="560" height="315"
+src="https://youtu.be/v65tQsJGKE0"
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
 
 https://youtu.be/v65tQsJGKE0
