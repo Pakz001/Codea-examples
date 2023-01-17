@@ -15,7 +15,7 @@ example lighting tilemap
 <img src="Media/AD735566-A8EE-4120-8110-18112FCAE504.png" width="60%">
 <br>
 <br>
-<br>
+<br>Dude Space Mining - asteroids mining exploration mockup.<br>
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=v65tQsJGKE0" target="_blank">
  <img src="http://img.youtube.com/vi/v65tQsJGKE0/mqdefault.jpg" alt="Watch the video" width="60%" border="10" />
 </a>
