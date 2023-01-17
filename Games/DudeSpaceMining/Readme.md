@@ -13,4 +13,4 @@ ideas : space city generator and tileset. shop and selling and building. dangero
 note : only 1 large asteroid gets generated. this at position apr. 100,100. The map should be infinite(64bit and memory limits)
 
 <br>
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/https://youtu.be/v65tQsJGKE0/0.jpg)](http://www.youtube.com/watch?v=https://youtu.be/v65tQsJGKE0 "Video Title")
+[![IMAGE ALT TEXT](https://youtu.be/v65tQsJGKE0/0.jpg)](https://youtu.be/v65tQsJGKE0 "Video Title")
