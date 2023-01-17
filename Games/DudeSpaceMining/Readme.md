@@ -17,5 +17,5 @@ https://youtu.be/v65tQsJGKE0
 
 <br>
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=v65tQsJGKE0" target="_blank">
- <img src="http://img.youtube.com/vi/v65tQsJGKE0/mqdefault.jpg" alt="Watch the video" width="240" height="180" border="10" />
+ <img src="http://img.youtube.com/vi/v65tQsJGKE0/mqdefault.jpg" alt="Watch the video" width="60%" border="10" />
 </a>
